@@ -1,5 +1,6 @@
-from django.views.generic import ListView, DetailView, CreateView, UpdateView
+from django.views.generic import ListView, DeleteView, DetailView, CreateView, UpdateView
 from .models import Joke
+from django.urls import reverse_lazy
 
 class JokeListView(ListView):
     model = Joke
@@ -15,4 +16,8 @@ class JokeCreateView(CreateView):
 class JokeUpdateView(UpdateView):
     model = Joke
     fields = ['question', 'answer']
+
+class JokeDeleteView(DeleteView):
+    model = Joke
+    success_url = reverse_lazy('jokes:list')
 # Create your views here.
