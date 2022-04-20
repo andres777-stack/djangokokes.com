@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'common',
     'pagesApp',
     'jokes',
     'django.contrib.admin',
