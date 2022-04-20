@@ -9,7 +9,9 @@ def random_joke():
     count = Joke.objects.count()
     if count > 0:
         i = random.randint(0, count-1)
+        print(i)
         joke = Joke.objects.all()[i]
+        print(joke)
         return {'joke': joke} 
     else:
         return {'joke':{
