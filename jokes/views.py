@@ -1,6 +1,7 @@
 from django.views.generic import ListView, DeleteView, DetailView, CreateView, UpdateView
 from .models import Joke
 from django.urls import reverse_lazy
+from .forms import JokeForm
 
 class JokeListView(ListView):
     model = Joke
@@ -11,11 +12,11 @@ class JokeDetailView(DetailView):
 #This view is for created a new object
 class JokeCreateView(CreateView):
     model = Joke
-    fields = ['question', 'answer']
+    form_class = JokeForm
 
 class JokeUpdateView(UpdateView):
     model = Joke
-    fields = ['question', 'answer']
+    form_class = JokeForm
 
 class JokeDeleteView(DeleteView):
     model = Joke
