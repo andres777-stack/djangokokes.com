@@ -31,7 +31,7 @@ class JobApplicationForm(forms.Form):
     #website = forms.URLField(widget=forms.URLInput(attrs={'size': '50', 
     #'placeholder': 'https://www.example.com'}))
     employment_type = forms.ChoiceField(choices=EMPLOYMENT_TYPE)
-    start_date = forms.DateField(widget=forms.SelectDateWidget(years=YEARS), validators=[validate_future_date])
+    start_date = forms.DateField(widget=forms.SelectDateWidget(years=YEARS, attrs={'style': 'width:31%; display: inline-block; margin: 0 1%'}), validators=[validate_future_date])
     available_days = forms.TypedMultipleChoiceField(choices=AVAILABLE_DAYS, coerce=int, widget=forms.CheckboxSelectMultiple(attrs={'checked': True}))
     desire_hourly_wage = forms.DecimalField(widget=forms.NumberInput(attrs={'min': '10.10', 'max':'100.00', 'step':'.25'}))
     cover_letter = forms.CharField(max_length=50)
