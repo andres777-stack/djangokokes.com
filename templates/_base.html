@@ -47,6 +47,9 @@ crossorigin="anonymous" referrerpolicy="no-referrer" /><link rel="stylesheet" hr
         <li class="nav-item">
           <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'my-account' %}">My Account</a>
+        </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" data-target="hola" id="navbarDropdown" 
           role="button" data-toggle="dropdown" aria-haspopup="true"
@@ -54,8 +57,8 @@ crossorigin="anonymous" referrerpolicy="no-referrer" /><link rel="stylesheet" hr
             Me
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown" id="hola">
-            <a class="dropdown-item" href="#">My Account</a>
-            <a class="dropdown-item" href="#">Django Jokes</a>
+            <a class="dropdown-item" href="{% url 'my-account' %}">My Account</a>
+            <a class="dropdown-item" href="{% url 'pages:home' %}">Django Jokes</a>
             <div class="dropdown-divider"></div>
             <form action="{% url 'account_logout' %}" method="post">
               {%csrf_token %}
@@ -65,13 +68,13 @@ crossorigin="anonymous" referrerpolicy="no-referrer" /><link rel="stylesheet" hr
         </li>
         {% endif %}
       </ul>
-      <form class="form-inline my-2 my-lg-0">
+      <!--<form class="form-inline my-2 my-lg-0">
         <input class="form-control mr-sm-2" type="search"
         placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
           Search
         </button>
-      </form>
+      </form>-->
     </div>
   </nav>
 </header>
