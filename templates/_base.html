@@ -36,22 +36,31 @@ crossorigin="anonymous" referrerpolicy="no-referrer" /><link rel="stylesheet" hr
         <li class="nav-item">
           <a class="nav-link" href="#">NavLink</a>
         </li>
+        {% if not user.is_authenticated %}
         <li class="nav-item">
-          <a class="nav-link" href="#">Log in</a>
+          <a class="nav-link" href="{% url 'account_login' %}">Log in</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'account_signup' %}">Sign Up</a>
+        </li>
+        {% else %}
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" 
-             role="button" data-toggle="dropdown" aria-haspopup="true"
-             aria-expanded="false">
+          <a class="nav-link dropdown-toggle" href="#" data-target="hola" id="navbarDropdown" 
+          role="button" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">
             Me
           </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown" id="hola">
             <a class="dropdown-item" href="#">My Account</a>
-            <a class="dropdown-item" href="#">My SITENAME</a>
+            <a class="dropdown-item" href="#">Django Jokes</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Log out</a>
+            <form action="{% url 'account_logout' %}" method="post">
+              {%csrf_token %}
+              <button class="btn dropdown-item">Log out</button>
+            </form>
           </div>
         </li>
+        {% endif %}
       </ul>
       <form class="form-inline my-2 my-lg-0">
         <input class="form-control mr-sm-2" type="search"
@@ -72,6 +81,9 @@ crossorigin="anonymous" referrerpolicy="no-referrer" /><link rel="stylesheet" hr
       <nav>
         <ul class="nav">
           <li class="nav-item"><a class="nav-link" href="{% url 'pages:aboutUs' %}">About</a></li>
+          {%if user.is_staff %}
+          <li class="nav-item"><a class="nav-link" href="/admin/">Admin</a></li>
+          {%endif %}
           <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
         </ul>
       </nav>
