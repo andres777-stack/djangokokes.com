@@ -3,6 +3,7 @@ from .models import Joke
 from django.urls import reverse_lazy
 from .forms import JokeForm
 
+
 class JokeListView(ListView):
     model = Joke
 
