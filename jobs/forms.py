@@ -41,7 +41,7 @@ class JobApplicationForm(forms.ModelForm):
         model =Applicant
 
         fields = ('first_name', 'last_name', 'email', 'website', 'employment_type', 'start_date', 'available_days',
-        'desired_hourly_wage', 'cover_letter', 'confirmation', 'job')
+        'desired_hourly_wage', 'cover_letter', 'resume', 'confirmation', 'job')
 
         widgets = {
             'first_name': forms.TextInput(attrs={'autofocus': True}), 
@@ -49,6 +49,7 @@ class JobApplicationForm(forms.ModelForm):
             'start_date': forms.SelectDateWidget(attrs={'style': 'width:31%; display: inline-block; margin: 0 1%'}, years = range(datetime.now().year, datetime.now().year+2)),
             'desired_hourly_wage': forms.NumberInput(attrs={'min': '10.10', 'max': '100.00', 'step': '25' }), 
             'cover_letter': forms.Textarea(attrs={'cols': '100', 'rows': '5'}),
+            'resume': forms.FileInput(attrs={'accept':'application/pdf'})
         }
 
     #first_name = forms.CharField(widget=forms.TextInput(attrs={'autofocus': True}))
