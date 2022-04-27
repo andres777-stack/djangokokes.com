@@ -24,10 +24,16 @@
                 <span class="badge badge-pill badge-secondary">{{tag.tag}}</span>
                 {%endfor%} 
                 </td>
+                {% if user == joke.user %}
                 <td>
                     <a href="{% url 'jokes:update' joke.slug%}"><i class="fa fa-pencil" aria-hidden="true"></i></a>
                     <a href="{% url 'jokes:delete' joke.slug %}"><i class="fa fa-trash" aria-hidden="true"></i></a> 
                 </td>
+                {%else%}
+                <td>
+                    <small>Created by {{joke.user.username}}</small>
+                </td>
+                {%endif%}
             </tr>
             {%endfor%}
         </tbody>
