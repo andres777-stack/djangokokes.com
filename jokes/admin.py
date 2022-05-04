@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Category, Tag, Joke
+from .models import Category, Tag, Joke, JokeVote
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
@@ -32,5 +32,14 @@ class Joke(admin.ModelAdmin):
         
         return ()
 
+@admin.register(JokeVote)
+class JokeVote(admin.ModelAdmin):
+    model = JokeVote
+    list_display = ['joke', 'user', 'vote']
 
+    def get_readonly_fields(self, request, obj=None):
+        if obj: #editing an existint object
+            return ('slug', 'created', 'updated')
+        
+        return ()
 # Register your models here.
