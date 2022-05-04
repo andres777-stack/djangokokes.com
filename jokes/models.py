@@ -6,9 +6,9 @@ from django.conf import settings
 class Joke(models.Model):
     question = models.TextField(max_length=200)
     answer = models.TextField(max_length=100, blank=True)
-    category = models.ForeignKey('Category', on_delete=models.PROTECT)
-    tags = models.ManyToManyField('Tag')
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT)
+    category = models.ForeignKey('Category', related_name='jokes', on_delete=models.PROTECT)
+    tags = models.ManyToManyField('Tag', blank=True, related_name='jokes')
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='jokes', on_delete=models.PROTECT)
     slug = models.SlugField(max_length=50, unique=True, null=False, editable=False)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
@@ -68,3 +68,19 @@ class Tag(models.Model):
     class Meta:
         verbose_name_plural = 'Tags'
         ordering = ['tag']
+
+
+class JokeVote(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='jokevotes', on_delete=models.CASCADE)
+    joke = models.ForeignKey(Joke, related_name='jokevotes', on_delete=models.CASCADE)
+    vote = models.SmallIntegerField()
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=['user', 'joke'],
+                name='one_vote_per_user_per_joke'
+            )
+        ]
