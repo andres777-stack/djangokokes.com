@@ -5,6 +5,10 @@ from .forms import JokeForm
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib import messages
+import json
+from django.http import JsonResponse
+from .models import Joke, JokeVote
+
 
 
 class JokeListView(ListView):
@@ -45,5 +49,45 @@ class JokeDeleteView(UserPassesTestMixin, DeleteView):
         obj = self.get_object()
         return self.request.user == obj.user
     
-    
+
+def vote(request, slug):
+    user = request.user
+    joke = Joke.objects.get(slug=slug)
+    data = json.loads(request.body)
+    vote = data['vote']
+    likes = data['likes']
+    dislikes = data['dislike']
+
+    if user.is_anonymous:
+        msg = 'Sorry, you have to be logged in to vote.'
+    else:
+        if JokeVote.objects.filter(user=user, joke=joke).exists():
+            joke_vote = JokeVote.objects.get(user=user, joke=joke)
+            if joke_vote.vote == vote:
+                msg = 'Rigth. You told us already. Geez.'
+            else:
+                joke_vote = vote
+                joke_vote.save()
+
+                if vote == -1:
+                    likes -= 1
+                    dislikes += 1
+                    msg = 'Dont like it after all, huh? Ok. Noted'
+                else:
+                    likes += 1
+                    dislikes -= 1
+                    msg = 'Grown on you, has it? Ok. Noted.'
+        else:
+            joke_vote = JokeVote(user=user, joke=joke, vote=vote)
+            joke_vote.save()
+            if vote == -1:
+                dislikes += 1
+                msg = 'Sorry, you did not like the joke.'
+            else:
+                likes += 1
+                msg = 'Yeah, good one, rigth?'
+        
+        response = {'msg':msg, 'likes':likes, 'dislikes':dislikes}
+        return JsonResponse(response)
+
 # Create your views here.
