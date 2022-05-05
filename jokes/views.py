@@ -56,7 +56,7 @@ def vote(request, slug):
     data = json.loads(request.body)
     vote = data['vote']
     likes = data['likes']
-    dislikes = data['dislike']
+    dislikes = data['dislikes']
 
     if user.is_anonymous:
         msg = 'Sorry, you have to be logged in to vote.'
@@ -66,7 +66,7 @@ def vote(request, slug):
             if joke_vote.vote == vote:
                 msg = 'Rigth. You told us already. Geez.'
             else:
-                joke_vote = vote
+                joke_vote.vote = vote
                 joke_vote.save()
 
                 if vote == -1:
