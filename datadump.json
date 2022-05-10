@@ -1,0 +1,210 @@
+[
+{
+  "model": "jokes.joke",
+  "pk": 2,
+  "fields": {
+    "question": "what are your name",
+    "answer": "my name",
+    "category": 1,
+    "user": 1,
+    "slug": "what-are-your-name",
+    "created": "2022-04-21T20:20:39.077Z",
+    "updated": "2022-04-21T20:20:39.077Z",
+    "tags": []
+  }
+},
+{
+  "model": "jokes.joke",
+  "pk": 6,
+  "fields": {
+    "question": "what did grandma say when grandpa told her the dog ran all the way back to the general store by their old house to get the newspaper?",
+    "answer": "that's over 100 miles! Seems a bit far-fetched",
+    "category": 2,
+    "user": 1,
+    "slug": "what-did-grandma-say-when-grandpa-told-her-the-dog",
+    "created": "2022-04-25T19:38:46.971Z",
+    "updated": "2022-04-25T19:38:46.971Z",
+    "tags": [
+      5,
+      6
+    ]
+  }
+},
+{
+  "model": "jokes.joke",
+  "pk": 7,
+  "fields": {
+    "question": "why did the cow cross the road?",
+    "answer": "to get to the udder side",
+    "category": 1,
+    "user": 1,
+    "slug": "why-did-the-cow-cross-the-road",
+    "created": "2022-04-26T21:47:19.348Z",
+    "updated": "2022-04-26T21:47:19.348Z",
+    "tags": [
+      5
+    ]
+  }
+},
+{
+  "model": "jokes.joke",
+  "pk": 8,
+  "fields": {
+    "question": "What do you a call a camel with no hump?",
+    "answer": "Humphrey",
+    "category": 1,
+    "user": 1,
+    "slug": "what-do-you-a-call-a-camel-with-no-hump",
+    "created": "2022-05-04T19:38:03.449Z",
+    "updated": "2022-05-04T19:38:03.449Z",
+    "tags": []
+  }
+},
+{
+  "model": "jokes.joke",
+  "pk": 9,
+  "fields": {
+    "question": "What do you a call a camel with no hump?",
+    "answer": "Humphrey",
+    "category": 1,
+    "user": 1,
+    "slug": "what-do-you-a-call-a-camel-with-no-hump-drlektjbhm",
+    "created": "2022-05-04T19:49:06.191Z",
+    "updated": "2022-05-04T19:49:06.191Z",
+    "tags": []
+  }
+},
+{
+  "model": "jokes.category",
+  "pk": 1,
+  "fields": {
+    "category": "Funny",
+    "slug": "funny",
+    "created": "2022-04-25T19:02:06.508Z",
+    "updated": "2022-04-25T19:02:14.282Z"
+  }
+},
+{
+  "model": "jokes.category",
+  "pk": 2,
+  "fields": {
+    "category": "Play on Words",
+    "slug": "play-on-words",
+    "created": "2022-04-25T19:02:30.686Z",
+    "updated": "2022-04-25T19:02:32.811Z"
+  }
+},
+{
+  "model": "jokes.category",
+  "pk": 3,
+  "fields": {
+    "category": "Brain_Teaser",
+    "slug": "brain_teaser",
+    "created": "2022-04-25T19:02:46.447Z",
+    "updated": "2022-04-25T19:02:48.346Z"
+  }
+},
+{
+  "model": "jokes.tag",
+  "pk": 1,
+  "fields": {
+    "tag": "Pun",
+    "slug": "pun",
+    "created": "2022-04-25T19:26:03.662Z",
+    "updated": "2022-04-25T19:26:08.138Z"
+  }
+},
+{
+  "model": "jokes.tag",
+  "pk": 2,
+  "fields": {
+    "tag": "Bar",
+    "slug": "bar",
+    "created": "2022-04-25T19:26:17.031Z",
+    "updated": "2022-04-25T19:26:18.964Z"
+  }
+},
+{
+  "model": "jokes.tag",
+  "pk": 3,
+  "fields": {
+    "tag": "Birthday",
+    "slug": "birthday",
+    "created": "2022-04-25T19:26:31.074Z",
+    "updated": "2022-04-25T19:26:32.949Z"
+  }
+},
+{
+  "model": "jokes.tag",
+  "pk": 4,
+  "fields": {
+    "tag": "Sport",
+    "slug": "sport",
+    "created": "2022-04-25T19:26:40.842Z",
+    "updated": "2022-04-25T19:26:42.476Z"
+  }
+},
+{
+  "model": "jokes.tag",
+  "pk": 5,
+  "fields": {
+    "tag": "Animal",
+    "slug": "animal",
+    "created": "2022-04-25T19:26:50.834Z",
+    "updated": "2022-04-25T19:26:52.464Z"
+  }
+},
+{
+  "model": "jokes.tag",
+  "pk": 6,
+  "fields": {
+    "tag": "Grandparents",
+    "slug": "grandparents",
+    "created": "2022-04-25T19:27:04.915Z",
+    "updated": "2022-04-25T19:27:07.293Z"
+  }
+},
+{
+  "model": "jokes.tag",
+  "pk": 7,
+  "fields": {
+    "tag": "History",
+    "slug": "history",
+    "created": "2022-04-27T19:11:30.039Z",
+    "updated": "2022-04-27T19:11:30.039Z"
+  }
+},
+{
+  "model": "jokes.jokevote",
+  "pk": 1,
+  "fields": {
+    "user": 8,
+    "joke": 8,
+    "vote": 1,
+    "created": "2022-05-04T19:39:49.511Z",
+    "updated": "2022-05-04T19:39:49.511Z"
+  }
+},
+{
+  "model": "jokes.jokevote",
+  "pk": 2,
+  "fields": {
+    "user": 8,
+    "joke": 9,
+    "vote": 1,
+    "created": "2022-05-04T19:50:49.078Z",
+    "updated": "2022-05-04T19:50:49.078Z"
+  }
+},
+{
+  "model": "jokes.jokevote",
+  "pk": 3,
+  "fields": {
+    "user": 3,
+    "joke": 2,
+    "vote": 1,
+    "created": "2022-05-05T00:05:40.002Z",
+    "updated": "2022-05-05T00:32:34.323Z"
+  }
+}
+]
