@@ -62,6 +62,21 @@ class JokeListView(ListView):
             'updated': 'updated',
             'default_key': 'updated'
         }
+    
+    def get_queryset(self):
+        ordering = self.get_ordering()
+        qs = Joke.objects.all()
+
+        if 'slug' in self.kwargs:
+            slug = self.kwargs['slug']
+            if '/category' in self.request.path_info:
+                qs = qs.filter(category__slug=slug)
+            if '/tag' in self.request.path_info:
+                qs = qs.filter(tags__slug = slug)
+        elif 'username' in self.kwargs:
+            username = self.kwargs['username']
+            qs = qs.filter(user__username=username)
+        return qs.order_by(ordering)
 
 
 
