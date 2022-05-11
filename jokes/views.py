@@ -13,6 +13,7 @@ from .models import Joke, JokeVote
 
 class JokeListView(ListView):
     model = Joke
+    paginate_by = 10
 
 class JokeDetailView(DetailView):
     model = Joke
