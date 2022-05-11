@@ -8,6 +8,7 @@ from django.contrib import messages
 import json
 from django.http import JsonResponse
 from .models import Joke, JokeVote
+from django.db.models import Q
 
 
 
@@ -67,6 +68,9 @@ class JokeListView(ListView):
         ordering = self.get_ordering()
         qs = Joke.objects.all()
 
+        if 'q' in self.request.GET:
+            q = self.request.GET.get('q')
+            qs = qs.filter(Q(question__icontains=q) | Q(answer__icontains=q))
         if 'slug' in self.kwargs:
             slug = self.kwargs['slug']
             if '/category' in self.request.path_info:
