@@ -2,6 +2,7 @@ from django.db import models
 from django.urls import reverse
 from common.utils.text import unique_slug
 from django.conf import settings
+from django.db.models import Avg
 
 class Joke(models.Model):
     question = models.TextField(max_length=200)
@@ -12,6 +13,14 @@ class Joke(models.Model):
     slug = models.SlugField(max_length=50, unique=True, null=False, editable=False)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
+
+    @property
+    def rating(self):
+        if self.num_votes == 0:
+            return 0
+        r = JokeVote.objects.filter(joke=self).aggregate(average=Avg('vote'))
+        print(r)
+        return round(5 + (r['average']) * 5, 2)
 
     @property
     def num_votes(self):
