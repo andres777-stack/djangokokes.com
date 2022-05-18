@@ -28,10 +28,13 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+INTERNAL_IPS = ['127.0.0.1',]
+
 
 # Application definition
 
 INSTALLED_APPS = [
+    'debug_toolbar',
     'private_storage',
     'crispy_forms',
     'jobs',
@@ -67,6 +70,7 @@ DEFAULT_FROM_EMAIL = 'sergioramirezsanmartin@gmail.com'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
