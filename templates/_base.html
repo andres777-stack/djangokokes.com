@@ -46,38 +46,38 @@ crossorigin="anonymous" referrerpolicy="no-referrer" /><link rel="stylesheet" hr
         </li>
         {% else %}
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'my-account' %}">My Account</a>
-        </li>
-        <li class="nav-item">
           <a class="nav-link" href="{% url 'jokes:creator' user.username %}?order={{order}}&direction={{direction}}">My Django Jokes</a>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" data-target="hola" id="navbarDropdown" 
-          role="button" data-toggle="dropdown" aria-haspopup="true"
-            aria-expanded="false">
-            Me
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown" id="hola">
-            <a class="dropdown-item" href="{% url 'my-account' %}">My Account</a>
-            <a class="dropdown-item" href="{% url 'pages:home' %}">Django Jokes</a>
-            <div class="dropdown-divider"></div>
-            <form action="{% url 'account_logout' %}" method="post">
-              {%csrf_token %}
-              <button class="btn dropdown-item">Log out</button>
-            </form>
-          </div>
-        </li>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+          <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Me
+              </a>
+              <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                <li><a class="dropdown-item" href="{% url 'my-account' %}">My Account</a></li>
+                <li><a class="dropdown-item" href="{% url 'pages:home' %}">Django Jokes</a></li>
+                <form action="{% url 'account_logout' %}" method="post">
+                  {%csrf_token %}
+                  <button class="btn dropdown-item">Log out</button>
+                </form>
+              </ul>
+            </li>
+          </ul>
+        </div>
         {% endif %}
       </ul>
       <form class="form-inline my-2 my-lg-0" action="{% url 'jokes:list' %}">
+        <div style="display:flex">
         <input class="form-control mr-sm-2" type="search"
         placeholder="Search" aria-label="Search" name="q" value="{{request.GET.q}}">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
           Search
         </button>
+      </div>
       </form>
     </div>
   </nav>
