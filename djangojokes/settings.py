@@ -199,7 +199,7 @@ PRIVATE_STORAGE_AUTH_FUNCTION = 'private_storage.permissions.allow_staff'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-if os.environ.get('ENVIRONMENT') != 'production':
-    from .local_settings import * 
+#if os.environ.get('ENVIRONMENT') != 'production':
+#    from .local_settings import * 
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressManifestStaticFilesStorage'
