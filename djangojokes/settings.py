@@ -202,4 +202,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #if os.environ.get('ENVIRONMENT') != 'production':
 #    from .local_settings import * 
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
