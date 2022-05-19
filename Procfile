@@ -1,0 +1,1 @@
+web: gunicorn djangojokes.wsgi --log-file-
